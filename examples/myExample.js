@@ -34,6 +34,7 @@ reply.confirm ("Will you tell me a little more about yourself?", function(err, y
     
     reply.get (options, function (err, answer) {
         if (err) return;
-        console.log("Your information:\n" + answer);
+        console.log("Your information:");
+        console.log(answer);
     });
 });
