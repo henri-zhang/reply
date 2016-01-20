@@ -49,18 +49,25 @@ var get = exports.get = function(options, callback) {
       stdin = process.stdin,
       stdout = process.stdout,
       fields = Object.keys(options);
-
+      
+  /*
+  * @description signals end of input
+  */
   var done = function() {
     close_prompt();
     callback(null, answers);
   }
-
+  
+  /*
+  * @description stops input and closes prompt
+  */
   var close_prompt = function() {
     stdin.pause();
     if (!rl) return;
     rl.close();
-    rl = null;
+    rl = null; // just in case
   }
+  
   /*
   * @param {string} key - description of question
   * @param {string} partial_answers - collected answers until call
@@ -101,7 +108,7 @@ var get = exports.get = function(options, callback) {
   */
   var validate = function(key, answer) {
 
-    if (typeof answer == 'undefined')
+    if (typeof answer == 'undefined') // testing multiple situations 
       return options[key].allow_empty || typeof get_default(key) != 'undefined';
     else if(regex = options[key].regex)
       return regex.test(answer);
@@ -121,7 +128,7 @@ var get = exports.get = function(options, callback) {
   * @description outputs error message if user does not adhere to valid options
   */
   var show_error = function(key) {
-    var str = options[key].error ? options[key].error : 'Invalid value.';
+    var str = options[key].error ? options[key].error : 'Invalid value.'; // if options[key].error exists, use it. Otherwise, use 'Invalid value.'
 
     if (options[key].options)
         str += ' (options are ' + options[key].options.join(', ') + ')';
@@ -137,10 +144,10 @@ var get = exports.get = function(options, callback) {
     var msg = '';
 
     if (text = options[key].message)
-      msg += text.trim() + ' ';
+      msg += text.trim() + ' '; // remove whitespace
 
     if (options[key].options)
-      msg += '(options are ' + options[key].options.join(', ') + ')';
+      msg += '(options are ' + options[key].options.join(', ') + ')'; // if there are options, print them
 
     if (msg != '') stdout.write("\033[1m" + msg + "\033[0m\n");
   }
@@ -196,7 +203,7 @@ var get = exports.get = function(options, callback) {
     var return_answer = (typeof answer != 'undefined') ? answer : fallback; // not initialized until answer is, is answer if answer is not undefined, otherwise is fallback
 
     if (validate(curr_key, answer))
-      next_question(++index, curr_key, return_answer);
+      next_question(++index, curr_key, return_answer); // next question
     else
       show_error(curr_key) || next_question(index); // repeats current
   }
@@ -221,7 +228,7 @@ var get = exports.get = function(options, callback) {
       }
     }
 
-    return true;
+    return true; 
   }
 
   /*
@@ -276,11 +283,11 @@ var get = exports.get = function(options, callback) {
   rl = get_interface(stdin, stdout);
   next_question(0);
 
-  rl.on('close', function() {  //listen for "closes"
+  rl.on('close', function() {  // listen for "closes"
     close_prompt(); // just in case
 
-    var given_answers = Object.keys(answers).length;
-    if (fields.length == given_answers) return;
+    var given_answers = Object.keys(answers).length; 
+    if (fields.length == given_answers) return; // end if went through all questions
 
     var err = new Error("Cancelled after giving " + given_answers + " answers.");
     callback(err, answers);
