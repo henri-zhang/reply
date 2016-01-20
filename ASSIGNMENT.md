@@ -7,7 +7,7 @@ The below questions should be answered (in detail!) regarding your submission.
 
 
 ##### 2. Consider the process of writing comments that "raise the level of abstraction." What does this mean to you? If you had to explain to a new CS142 student how to write an effective comment, what would you say? #####
-> A comment should go beyond the lines of code. It should explain the why of the function as opposed to how. The purpose of a function should be deducible from its name/parameters. The comment shoudl explain why the parameters/funciton exists.
+> A comment should go beyond the lines of code. It should explain the why of the function as opposed to how. The purpose of a function should be deducible from its name/parameters. The comment should explain why the parameters/funciton exists.
 
 
 ##### 3. Approximately how many hours did it take you to complete this assignment? #####
@@ -15,7 +15,8 @@ The below questions should be answered (in detail!) regarding your submission.
 
 
 ##### 4. Did you receive help from any other sources (classmates, etc)? If so, please list who (be specific!). #####
-> I asked questions about the syntax of my module and found answers on Stack Overflow.
+> I asked questions about the syntax of my module and found answers on Stack Overflow. http://stackoverflow.com/questions/1771786/question-mark-in-javascript
+http://stackoverflow.com/questions/44569/octal-number-literals-when-why-ever
 
 ##### 5. Did you encounter any problems in this assignment we should warn students about in the future? How can we make the assignment better? #####
-> I think the big thing is that some students won't know about syntax of JS and some things will confuse them. A big thing for me was learning about ternary operators, specifically "? :". When I first saw that I was very confused, and had to look it up. I don't think there's anything that can really make this better. It's not too terrible of a problem if you can use Google.
+> I think the big thing is that some students won't know about syntax of JS and some things will confuse them. A big thing for me was learning about ternary operators, specifically "? :". When I first saw that I was very confused, and had to look it up. I don't think there's anything that can really make this better. It's not too terrible of a problem if you can use Google. Additionally, I was very unfamiliar with JSDoc, and spent a chunk of time learning how it works.

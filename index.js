@@ -126,7 +126,7 @@ var get = exports.get = function(options, callback) {
     if (options[key].options)
         str += ' (options are ' + options[key].options.join(', ') + ')';
 
-    stdout.write("\033[31m" + str + "\033[0m" + "\n");
+    stdout.write("\033[31m" + str + "\033[0m" + "\n"); //octals
   }
   
   /*
